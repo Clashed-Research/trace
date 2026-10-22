@@ -10,6 +10,8 @@ Ad platforms optimize for their own conversion metrics. CRM labels drift. Billin
 
 Trace follows each campaign from spend to retained revenue and preserves the evidence behind every recommendation.
 
+> **Data notice:** All checked-in records are fictional synthetic fixtures. They contain no real customer, financial, advertising, or support data. See `data/README.md`.
+
 ## Agent collaboration
 
 1. **Planner** maps the business question to required evidence.
