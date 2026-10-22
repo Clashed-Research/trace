@@ -10,6 +10,8 @@ Ad platforms optimize for their own conversion metrics. CRM labels drift. Billin
 
 Trace follows each campaign from spend to retained revenue and preserves the evidence behind every recommendation.
 
+**Live demo:** https://trace-ten-ashy.vercel.app
+
 > **Data notice:** All checked-in records are fictional synthetic fixtures. They contain no real customer, financial, advertising, or support data. See `data/README.md`.
 
 ## Agent collaboration
@@ -35,7 +37,7 @@ Do not claim the planned live integrations as complete until their credentials h
 
 ## Run locally
 
-Requirements: Node.js 20+.
+Requirements: Node.js 22+.
 
 ```bash
 npm install
@@ -66,6 +68,7 @@ npm run demo
 - Recommendations are proposals for human approval; Trace does not change ad-platform budgets.
 - Zetaris and Nemotron adapters are implemented but cannot be live-verified until hackathon credentials are supplied locally.
 - Live integrations activate when `SAMPLE_MODE=false` and the corresponding endpoint credentials from `.env.example` are present. The UI reports READY or FALLBACK rather than hiding integration state.
+- Hosted run history is best-effort per serverless instance; the active run and its evidence remain available in the UI. Durable shared history is a post-hackathon database upgrade.
 
 ## API
 

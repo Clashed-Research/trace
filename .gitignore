@@ -5,3 +5,5 @@ vendor/
 dist/
 coverage/
 *.log
+
+.vercel

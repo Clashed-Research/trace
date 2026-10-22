@@ -3,7 +3,7 @@
   "functions": {
     "api/index.ts": {
       "maxDuration": 60,
-      "includeFiles": ["data/**", "vendor/**", "web/**"]
+      "includeFiles": "{data,vendor,web}/**"
     }
   },
   "rewrites": [

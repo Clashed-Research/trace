@@ -9,7 +9,8 @@
     "node": ">=22"
   },
   "scripts": {
-    "setup": "npx --yes degit meterless/meterless/engines/hmem/reference vendor/hmem && cd vendor/hmem && npm install --no-audit --no-fund",
+    "setup": "node scripts/setup-hmem.mjs",
+    "vercel-build": "npm run setup",
     "dev": "tsx src/server.ts",
     "demo": "tsx src/cli.ts",
     "test": "tsx src/test.ts",
