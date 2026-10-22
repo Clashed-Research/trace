@@ -1,0 +1,8 @@
+[
+  {"customer_id":"C-001","revenue":1200,"refund":1200,"months_active":1},
+  {"customer_id":"C-002","revenue":900,"refund":450,"months_active":1},
+  {"customer_id":"C-003","revenue":4800,"refund":0,"months_active":5},
+  {"customer_id":"C-004","revenue":4400,"refund":0,"months_active":4},
+  {"customer_id":"C-005","revenue":6200,"refund":0,"months_active":6},
+  {"customer_id":"C-006","revenue":5600,"refund":0,"months_active":6}
+]

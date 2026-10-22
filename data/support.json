@@ -1,0 +1,8 @@
+[
+  {"customer_id":"C-001","tickets":5,"sentiment":"negative","issue":"refund requested"},
+  {"customer_id":"C-002","tickets":3,"sentiment":"negative","issue":"expectation mismatch"},
+  {"customer_id":"C-003","tickets":1,"sentiment":"positive","issue":"onboarding"},
+  {"customer_id":"C-004","tickets":0,"sentiment":"positive","issue":"none"},
+  {"customer_id":"C-005","tickets":1,"sentiment":"positive","issue":"billing question"},
+  {"customer_id":"C-006","tickets":0,"sentiment":"positive","issue":"none"}
+]

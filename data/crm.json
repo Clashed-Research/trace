@@ -1,0 +1,8 @@
+[
+  {"lead_id":"L-101","campaign":"spring-growth","customer_id":"C-001","status":"won","deal_value":1200},
+  {"lead_id":"L-102","campaign":"Spring Growth","customer_id":"C-002","status":"won","deal_value":900},
+  {"lead_id":"L-103","campaign":"brand-search","customer_id":"C-003","status":"won","deal_value":2400},
+  {"lead_id":"L-104","campaign":"Brand Search","customer_id":"C-004","status":"won","deal_value":2200},
+  {"lead_id":"L-105","campaign":"founder_stories","customer_id":"C-005","status":"won","deal_value":3100},
+  {"lead_id":"L-106","campaign":"Founder Stories","customer_id":"C-006","status":"won","deal_value":2800}
+]

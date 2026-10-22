@@ -1,0 +1,21 @@
+{
+  "name": "trace-agent",
+  "version": "0.1.0",
+  "description": "Trace: auditable marketing attribution across fragmented business data.",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "setup": "npx --yes degit meterless/meterless/engines/hmem/reference vendor/hmem && cd vendor/hmem && npm install --no-audit --no-fund",
+    "dev": "tsx src/server.ts",
+    "demo": "tsx src/cli.ts",
+    "test": "tsx src/test.ts",
+    "eval": "tsx src/eval.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.19.0",
+    "typescript": "^7.0.2"
+  }
+}

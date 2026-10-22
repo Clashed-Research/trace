@@ -1,0 +1,16 @@
+import assert from "node:assert/strict";
+import { runTrace } from "./trace.ts";
+const run = await runTrace();
+assert.equal(run.sources.length, 4);
+assert.equal(run.revisionCount, 1);
+assert.ok(run.events.some(e => e.kind === "critique"));
+assert.equal(run.recommendations.find(r => r.campaign === "Spring Growth")?.action, "decrease");
+assert.equal(run.recommendations.find(r => r.campaign === "Founder Stories")?.action, "increase");
+assert.ok(run.campaigns.every(c => c.evidence.length >= 4));
+assert.equal(run.integrations.memory, "live");
+assert.ok(run.evidenceRecords.length >= 18);
+const clean = await runTrace("Find the best campaign", "clean-growth");
+assert.equal(clean.scenario, "clean-growth");
+const support = await runTrace("Find hidden service costs", "support-risk");
+assert.ok(support.campaigns.find(c => c.campaign === "Brand Search")!.supportTickets >= 14);
+console.log("Trace checks passed: reconciliation, critique loop, decisions, and provenance.");
