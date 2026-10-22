@@ -5,6 +5,9 @@
   "private": true,
   "license": "Apache-2.0",
   "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "setup": "npx --yes degit meterless/meterless/engines/hmem/reference vendor/hmem && cd vendor/hmem && npm install --no-audit --no-fund",
     "dev": "tsx src/server.ts",
