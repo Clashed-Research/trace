@@ -15,10 +15,11 @@ export async function queryZetaris(sql: string): Promise<any[]> {
 }
 
 export async function reviewWithNemotron(input: object): Promise<{ mode: "live" | "deterministic-fallback"; review?: string; warning?: string }> {
-  const url = process.env.NEMOTRON_CHAT_URL;
-  if (!url) return { mode: "deterministic-fallback", warning: "Nemotron endpoint is not configured" };
+  const apiKey = process.env.NVIDIA_API_KEY || process.env.NEMOTRON_API_KEY;
+  const url = process.env.NEMOTRON_CHAT_URL || (apiKey ? "https://integrate.api.nvidia.com/v1/chat/completions" : undefined);
+  if (!url || !apiKey) return { mode: "deterministic-fallback", warning: "Nemotron API key is not configured" };
   try {
-    const response = await fetch(url, { method: "POST", signal: timeout(12000), headers: { "content-type": "application/json", authorization: `Bearer ${process.env.NEMOTRON_API_KEY || "not-used"}` }, body: JSON.stringify({ model: process.env.NVIDIA_MODEL || "nvidia/nemotron-3.5-lightning-30b-a3b", temperature: 0, max_tokens: 300, response_format: { type: "json_object" }, chat_template_kwargs: { enable_thinking: false }, messages: [{ role: "system", content: "You are Trace's marketing attribution critic. Return JSON with keys verdict, risk, and revision_request. Do not claim causation. Reject conclusions not supported by the supplied metrics." }, { role: "user", content: JSON.stringify(input) }] }) });
+    const response = await fetch(url, { method: "POST", signal: timeout(12000), headers: { "content-type": "application/json", authorization: `Bearer ${apiKey}` }, body: JSON.stringify({ model: process.env.NVIDIA_MODEL || "nvidia/nemotron-3.5-lightning-30b-a3b", temperature: 0, max_tokens: 300, response_format: { type: "json_object" }, chat_template_kwargs: { enable_thinking: false }, messages: [{ role: "system", content: "You are Trace's marketing attribution critic. Return JSON with keys verdict, risk, and revision_request. Do not claim causation. Reject conclusions not supported by the supplied metrics." }, { role: "user", content: JSON.stringify(input) }] }) });
     if (!response.ok) throw new Error(`Nemotron request failed (${response.status})`);
     const payload: any = await response.json();
     return { mode: "live", review: payload.choices?.[0]?.message?.content || "{}" };
@@ -26,9 +27,10 @@ export async function reviewWithNemotron(input: object): Promise<{ mode: "live" 
 }
 
 export async function integrationHealth() {
+  const nemotronKey = process.env.NVIDIA_API_KEY || process.env.NEMOTRON_API_KEY;
   return {
     zetaris: { configured: Boolean(process.env.ZETARIS_QUERY_URL && process.env.ZETARIS_ID_TOKEN), endpoint: process.env.ZETARIS_QUERY_URL ? "configured" : "missing" },
-    nemotron: { configured: Boolean(process.env.NEMOTRON_CHAT_URL), model: process.env.NVIDIA_MODEL || "nvidia/nemotron-3.5-lightning-30b-a3b" },
+    nemotron: { configured: Boolean(nemotronKey), model: process.env.NVIDIA_MODEL || "nvidia/nemotron-3.5-lightning-30b-a3b" },
     sampleMode: process.env.SAMPLE_MODE !== "false"
   };
 }
